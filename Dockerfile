@@ -11,16 +11,11 @@ WORKDIR $APP_HOME
 # Скопіюємо інші файли в робочу директорію контейнера
 COPY . .
 
+# Встановимо пакети
+RUN pip install -r requirements.txt
+
 # Позначимо порт, де працює застосунок всередині контейнера
 EXPOSE 3000
 
 # Запустимо наш застосунок всередині контейнера
-ENTRYPOINT ["python", "main.py"]
-
-# FROM python:3.12-slim
-# ENV APP_HOME /app
-# WORKDIR $APP_HOME
-# COPY . .
-# RUN pip install -r requirements.txt
-# EXPOSE 8000
-# CMD [ "python", "main.py" ]
+CMD ["python", "main.py"]
